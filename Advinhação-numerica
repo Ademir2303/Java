@@ -1,0 +1,41 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        Random numRandom = new Random();
+        int numSorteio = numRandom.nextInt(100);
+
+        System.out.println("### Sistema de Adivinhação Numérica ###");
+
+        int numMenor = 0;
+        int numMaior = 100;
+        
+        int tentativa = 0;
+        int numEscolhido = 101;
+
+        while (numSorteio != numEscolhido) {
+            tentativa++;
+    
+            System.out.println(tentativa + " tentativa:");
+                
+            numEscolhido = scan.nextInt();
+    
+            if (numEscolhido == numSorteio) {
+                System.out.println("Parabéns! Você acertou com " + tentativa + " tentativas! O número sorteado foi: " + numSorteio);
+            } else if (numEscolhido < numSorteio && numEscolhido >= 0) {
+                numMenor = numEscolhido;
+                System.out.println("Digite um número entre: " + numMenor + " e " + numMaior);
+            } else if (numEscolhido > numSorteio && numEscolhido <= 100) {
+                numMaior = numEscolhido;
+                System.out.println("Digite um número entre: " + numMenor + " e " + numMaior);
+            } else {
+                System.out.println("Número não permitido");
+            }
+        }
+
+        scan.close();
+    }
+}
